@@ -11,6 +11,8 @@
 		705E19FC2A6E34CF003AEEA7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E19FB2A6E34CF003AEEA7 /* ContentView.swift */; };
 		705E19FE2A6E34D0003AEEA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705E19FD2A6E34D0003AEEA7 /* Assets.xcassets */; };
 		705E1A012A6E34D0003AEEA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 705E1A002A6E34D0003AEEA7 /* Preview Assets.xcassets */; };
+		705E1A092A6E3A6F003AEEA7 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E1A082A6E3A6F003AEEA7 /* PrimaryButton.swift */; };
+		705E1A0C2A6E3EC6003AEEA7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E1A0B2A6E3EC5003AEEA7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		705E19FB2A6E34CF003AEEA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		705E19FD2A6E34D0003AEEA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		705E1A002A6E34D0003AEEA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		705E1A082A6E3A6F003AEEA7 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		705E1A0B2A6E3EC5003AEEA7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +56,11 @@
 			isa = PBXGroup;
 			children = (
 				705E19F92A6E34CF003AEEA7 /* TriviaGameDemoApp.swift */,
-				705E19FB2A6E34CF003AEEA7 /* ContentView.swift */,
+				705E1A0A2A6E3B39003AEEA7 /* View */,
+				705E1A072A6E3A46003AEEA7 /* Components */,
 				705E19FD2A6E34D0003AEEA7 /* Assets.xcassets */,
 				705E19FF2A6E34D0003AEEA7 /* Preview Content */,
+				705E1A0B2A6E3EC5003AEEA7 /* Extensions.swift */,
 			);
 			path = TriviaGameDemo;
 			sourceTree = "<group>";
@@ -65,6 +71,22 @@
 				705E1A002A6E34D0003AEEA7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		705E1A072A6E3A46003AEEA7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				705E1A082A6E3A6F003AEEA7 /* PrimaryButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		705E1A0A2A6E3B39003AEEA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				705E19FB2A6E34CF003AEEA7 /* ContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705E1A0C2A6E3EC6003AEEA7 /* Extensions.swift in Sources */,
+				705E1A092A6E3A6F003AEEA7 /* PrimaryButton.swift in Sources */,
 				705E19FC2A6E34CF003AEEA7 /* ContentView.swift in Sources */,
 				705E19FA2A6E34CF003AEEA7 /* TriviaGameDemoApp.swift in Sources */,
 			);
