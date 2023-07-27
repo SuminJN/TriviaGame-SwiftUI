@@ -14,7 +14,7 @@ struct QuestionView: View {
         VStack(spacing: 40) {
             HStack {
                 Text("Trivia Game")
-                    .lilacTitle()
+                    .mainTitle()
                 Spacer()
                 Text("\(triviaManager.index + 1) out of \(triviaManager.length)")
                     .foregroundColor(Color("AccentColor"))

@@ -15,7 +15,7 @@ struct ContentView: View {
             VStack(spacing: 40) {
                 VStack(spacing: 20) {
                     Text("Trivia Game")
-                        .lilacTitle()
+                        .mainTitle()
                     
                     Text("Are you ready to test out your trivia skills?")
                         .foregroundColor(Color("AccentColor"))
