@@ -8,16 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @StateObject var triviaManager = TriviaManager(trueOrFalse: true)
-    @State var selectedDifficulty = Difficulties.easy
+    @State var selectedDifficulty = Difficulties.any
     enum Difficulties: String, CaseIterable, Identifiable {
-        case easy, midium, hard
+        case any, easy, midium, hard
+        var id: Self { self }
+    }
+    
+    @State var selectedCategory = Categories.GeneralKnowledge
+    enum Categories: String, CaseIterable, Identifiable {
+        case GeneralKnowledge = "General Knowledge",
+             Books,
+             Film,
+             Music,
+             MusicalsAndTheatres = "Musicals & Theatres",
+             Television,
+             VideoGames = "Video Games",
+             BoardGames = "Board Games",
+             ScienceAndNature = "Science & Nature",
+             Computers,
+             Mathematics,
+             Mythology,
+             Sports,
+             Geography
+        
         var id: Self { self }
     }
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 40) {
+            VStack {
                 VStack(spacing: 20) {
                     Text("Trivia Game")
                         .mainTitle()
@@ -25,18 +44,27 @@ struct ContentView: View {
                     Text("Are you ready to test out your trivia skills?")
                         .foregroundColor(Color("AccentColor"))
                 }
-                
-                Picker("Difficulty", selection: $selectedDifficulty) {
-                    ForEach(Difficulties.allCases) {
-                        Text($0.rawValue.capitalized)
+                List {
+                    Picker("Difficulty", selection: $selectedDifficulty) {
+                        ForEach(Difficulties.allCases) {
+                            Text($0.rawValue.capitalized)
+                        }
+                    }
+                    
+                    Picker("Category", selection: $selectedCategory) {
+                        ForEach(Categories.allCases) {
+                            Text($0.rawValue)
+                        }
                     }
                 }
-                .pickerStyle(.segmented)
-                .padding()
+                .foregroundColor(Color("AccentColor"))
+                .scrollDisabled(true)
+                .scrollContentBackground(.hidden)
+                .frame(height: 180)
                 
                 NavigationLink {
                     TriviaView()
-                        .environmentObject(TriviaManager(difficulty: selectedDifficulty.rawValue))
+                        .environmentObject(TriviaManager(difficulty: selectedDifficulty.rawValue, category: selectedCategory.rawValue))
                 } label: {
                     PrimaryButton(text: "Let's go!")
                 }

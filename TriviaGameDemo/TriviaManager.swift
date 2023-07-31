@@ -19,16 +19,20 @@ class TriviaManager: ObservableObject {
     @Published private(set) var progress: CGFloat = 0.00
     @Published private(set) var score = 0
     @Published private(set) var difficulty: String = ""
+    @Published private(set) var categoryNumber: Int = 0
     
-    init(difficulty: String) {
+    init(difficulty: String, category: String) {
         self.difficulty = difficulty
+        
+        setCategoryNumber(category: category)
+        
         Task.init {
             await fetchTrivia()
         }
     }
     
     func fetchTrivia() async {
-        guard let url = URL(string: "https://opentdb.com/api.php?amount=10&difficulty=" + difficulty) else { fatalError("Missing URL") }
+        guard let url = URL(string: "https://opentdb.com/api.php?amount=10" + (difficulty == "any" ? "" : "&difficulty=\(difficulty)") + "&category=\(categoryNumber)") else { fatalError("Missing URL") }
         
         let urlRequest = URLRequest(url: url)
         
@@ -83,7 +87,38 @@ class TriviaManager: ObservableObject {
         }
     }
     
-//    func setDifficulty(diff: String) {
-//        difficulty = diff
-//    }
+    func setCategoryNumber(category: String) {
+        switch category {
+        case "General Knowledge":
+            categoryNumber = 9
+        case "Books":
+            categoryNumber = 10
+        case "Film":
+            categoryNumber = 11
+        case "Music":
+            categoryNumber = 12
+        case "Musicals & Theatres":
+            categoryNumber = 13
+        case "Television":
+            categoryNumber = 14
+        case "Video Games":
+            categoryNumber = 15
+        case "Board Games":
+            categoryNumber = 16
+        case "Science & Nature":
+            categoryNumber = 17
+        case "Computers":
+            categoryNumber = 18
+        case "Mathematics":
+            categoryNumber = 19
+        case "Mythology":
+            categoryNumber = 20
+        case "Sports":
+            categoryNumber = 21
+        case "Geography":
+            categoryNumber = 22
+        default:
+            categoryNumber = 0
+        }
+    }
 }
