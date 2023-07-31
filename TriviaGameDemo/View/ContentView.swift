@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var triviaManager = TriviaManager()
+//    @StateObject var triviaManager = TriviaManager(trueOrFalse: true)
+    @State var selectedDifficulty = Difficulties.easy
+    enum Difficulties: String, CaseIterable, Identifiable {
+        case easy, midium, hard
+        var id: Self { self }
+    }
     
     var body: some View {
         NavigationView {
@@ -21,9 +26,17 @@ struct ContentView: View {
                         .foregroundColor(Color("AccentColor"))
                 }
                 
+                Picker("Difficulty", selection: $selectedDifficulty) {
+                    ForEach(Difficulties.allCases) {
+                        Text($0.rawValue.capitalized)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding()
+                
                 NavigationLink {
                     TriviaView()
-                        .environmentObject(triviaManager)
+                        .environmentObject(TriviaManager(difficulty: selectedDifficulty.rawValue))
                 } label: {
                     PrimaryButton(text: "Let's go!")
                 }
