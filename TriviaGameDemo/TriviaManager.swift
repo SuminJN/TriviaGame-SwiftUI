@@ -23,7 +23,6 @@ class TriviaManager: ObservableObject {
     
     init(difficulty: String, category: String) {
         self.difficulty = difficulty
-        
         setCategoryNumber(category: category)
         
         Task.init {
@@ -89,6 +88,8 @@ class TriviaManager: ObservableObject {
     
     func setCategoryNumber(category: String) {
         switch category {
+        case "Any":
+            categoryNumber = 0
         case "General Knowledge":
             categoryNumber = 9
         case "Books":
@@ -97,16 +98,6 @@ class TriviaManager: ObservableObject {
             categoryNumber = 11
         case "Music":
             categoryNumber = 12
-        case "Musicals & Theatres":
-            categoryNumber = 13
-        case "Television":
-            categoryNumber = 14
-        case "Video Games":
-            categoryNumber = 15
-        case "Board Games":
-            categoryNumber = 16
-        case "Science & Nature":
-            categoryNumber = 17
         case "Computers":
             categoryNumber = 18
         case "Mathematics":

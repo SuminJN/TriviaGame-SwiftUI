@@ -14,17 +14,13 @@ struct ContentView: View {
         var id: Self { self }
     }
     
-    @State var selectedCategory = Categories.GeneralKnowledge
+    @State var selectedCategory = Categories.any
     enum Categories: String, CaseIterable, Identifiable {
-        case GeneralKnowledge = "General Knowledge",
+        case any = "Any",
+             GeneralKnowledge = "General Knowledge",
              Books,
              Film,
              Music,
-             MusicalsAndTheatres = "Musicals & Theatres",
-             Television,
-             VideoGames = "Video Games",
-             BoardGames = "Board Games",
-             ScienceAndNature = "Science & Nature",
              Computers,
              Mathematics,
              Mythology,
@@ -73,6 +69,7 @@ struct ContentView: View {
             .edgesIgnoringSafeArea(.all)
             .background(Color("BGColor"))
         }
+        .navigationBarHidden(true)
     }
 }
 

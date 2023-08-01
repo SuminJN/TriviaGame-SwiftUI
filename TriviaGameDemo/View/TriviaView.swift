@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TriviaView: View {
     @EnvironmentObject var triviaManager: TriviaManager
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         if triviaManager.reachedEnd {
             VStack(spacing: 20) {
@@ -20,6 +21,7 @@ struct TriviaView: View {
                 Text("you scored \(triviaManager.score) out of \(triviaManager.length)")
                 
                 Button {
+                    dismiss()
                     Task.init {
                         await triviaManager.fetchTrivia()
                     }
