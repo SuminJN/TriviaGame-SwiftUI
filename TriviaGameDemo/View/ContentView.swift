@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selectedDifficulty = Difficulties.any
+    @State var selectDifficulty = Difficulties.any
     enum Difficulties: String, CaseIterable, Identifiable {
         case any, easy, midium, hard
         var id: Self { self }
     }
     
-    @State var selectedCategory = Categories.any
+    @State var selectCategory = Categories.any
     enum Categories: String, CaseIterable, Identifiable {
         case any = "Any",
              GeneralKnowledge = "General Knowledge",
@@ -30,6 +30,15 @@ struct ContentView: View {
         var id: Self { self }
     }
     
+    @State var selectType = Types.any
+    enum Types: String, CaseIterable, Identifiable {
+        case any = "Any",
+             multiple = "Multiple Choice",
+             trueOrFalse = "True or False"
+        
+        var id: Self { self }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -41,14 +50,20 @@ struct ContentView: View {
                         .foregroundColor(Color("AccentColor"))
                 }
                 List {
-                    Picker("Difficulty", selection: $selectedDifficulty) {
+                    Picker("Difficulty", selection: $selectDifficulty) {
                         ForEach(Difficulties.allCases) {
                             Text($0.rawValue.capitalized)
                         }
                     }
                     
-                    Picker("Category", selection: $selectedCategory) {
+                    Picker("Category", selection: $selectCategory) {
                         ForEach(Categories.allCases) {
+                            Text($0.rawValue)
+                        }
+                    }
+                    
+                    Picker("Type", selection: $selectType) {
+                        ForEach(Types.allCases) {
                             Text($0.rawValue)
                         }
                     }
@@ -56,11 +71,11 @@ struct ContentView: View {
                 .foregroundColor(Color("AccentColor"))
                 .scrollDisabled(true)
                 .scrollContentBackground(.hidden)
-                .frame(height: 180)
+                .frame(height: 200)
                 
                 NavigationLink {
                     TriviaView()
-                        .environmentObject(TriviaManager(difficulty: selectedDifficulty.rawValue, category: selectedCategory.rawValue))
+                        .environmentObject(TriviaManager(difficulty: selectDifficulty.rawValue, category: selectCategory.rawValue, type: selectType.rawValue))
                 } label: {
                     PrimaryButton(text: "Let's go!")
                 }

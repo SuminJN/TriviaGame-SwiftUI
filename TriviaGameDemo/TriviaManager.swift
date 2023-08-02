@@ -20,10 +20,13 @@ class TriviaManager: ObservableObject {
     @Published private(set) var score = 0
     @Published private(set) var difficulty: String = ""
     @Published private(set) var categoryNumber: Int = 0
+    @Published private(set) var type: String = ""
     
-    init(difficulty: String, category: String) {
+    
+    init(difficulty: String, category: String, type: String) {
         self.difficulty = difficulty
         setCategoryNumber(category: category)
+        setType(type: type)
         
         Task.init {
             await fetchTrivia()
@@ -31,7 +34,7 @@ class TriviaManager: ObservableObject {
     }
     
     func fetchTrivia() async {
-        guard let url = URL(string: "https://opentdb.com/api.php?amount=10" + (difficulty == "any" ? "" : "&difficulty=\(difficulty)") + "&category=\(categoryNumber)") else { fatalError("Missing URL") }
+        guard let url = URL(string: "https://opentdb.com/api.php?amount=10" + (difficulty == "any" ? "" : "&difficulty=\(difficulty)") + "&category=\(categoryNumber)" + "&type=\(type)") else { fatalError("Missing URL") }
         
         let urlRequest = URLRequest(url: url)
         
@@ -88,7 +91,7 @@ class TriviaManager: ObservableObject {
     
     func setCategoryNumber(category: String) {
         switch category {
-        case "Any":
+        case "Any Category":
             categoryNumber = 0
         case "General Knowledge":
             categoryNumber = 9
@@ -110,6 +113,19 @@ class TriviaManager: ObservableObject {
             categoryNumber = 22
         default:
             categoryNumber = 0
+        }
+    }
+    
+    func setType(type: String) {
+        switch type {
+        case "Any":
+            self.type = ""
+        case "Multiple Choice":
+            self.type = "multiple"
+        case "True or False":
+            self.type = "boolean"
+        default:
+            self.type = ""
         }
     }
 }

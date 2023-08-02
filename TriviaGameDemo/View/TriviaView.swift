@@ -44,6 +44,6 @@ struct TriviaView: View {
 struct TriviaView_Previews: PreviewProvider {
     static var previews: some View {
         TriviaView()
-            .environmentObject(TriviaManager(difficulty: "", category: ""))
+            .environmentObject(TriviaManager(difficulty: "", category: "", type: ""))
     }
 }
