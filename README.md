@@ -6,3 +6,7 @@
 <img width="300" alt="3" src="https://github.com/SuminJN/TriviaGame-SwiftUI/assets/71697350/b7ed779d-8f78-49e2-991b-aa91acf3d2c1">
 <img width="300" alt="4" src="https://github.com/SuminJN/TriviaGame-SwiftUI/assets/71697350/3a8dd761-4342-4536-a450-2cd707d05bab">
 <img width="300" alt="5" src="https://github.com/SuminJN/TriviaGame-SwiftUI/assets/71697350/bb267334-463f-473f-80f0-6da65d26e74a">
+
+
+#### Reference: https://www.youtube.com/watch?v=b55npVkqa5U&list=LL&index=1
+#### API: https://opentdb.com
